@@ -1,0 +1,101 @@
+import javax.swing.*;
+import java.io.*;
+
+/**
+ * SCOPO:
+ * Eseguire il test su una scacchiera con 16 regine. L'esecuzione avviene in serie su 5 prove per ogni configurazione.
+ * In un file 'checkpoint.txt' viene scritto un record di questo tipo
+ 
+ *                         numero_configurazione_DA_FARE|prova_DA_FARE
+ 
+ * di modo da gestire lo stop della simulazione.
+ * In un secondo file ('result') si scrivono coppie nel seguente formato
+ 
+ *                      numero_prova|configurazione_finale|numero_di_passi
+ 
+ * Il file result viene poi analizzato da una procedura per la generazione del grafico in confronto con quello generato
+ * nella prova su 8 regine.
+ *
+ * @author  Skyman
+ */
+
+
+class Launch16Regine{
+
+ final String CHECKPOINT_FILE = "checkpoint.txt";
+ final String RESULT_FILE = "result.dat";
+ 
+ PrintWriter result = null;
+ BufferedReader checkpoint = null;
+ 
+ File dir = null;
+ String codifica = "";
+ private int i;
+ private int prova;
+ 
+ 
+ 
+ public Launch16Regine()  throws Exception
+ {
+ 	 int n = 2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2;
+ 	 
+ 	 
+ 	 checkpoint = new BufferedReader(new FileReader( CHECKPOINT_FILE ));
+ 	 String[] records = checkpoint.readLine().split("|");
+ 	 i = Integer.parseInt( records[0] );
+ 	 prova = Integer.parseInt( records[1] );
+ 	 System.out.println("Inizio da "+i);
+ 	 
+ 	 
+ 	 
+ 	 result = new PrintWriter(new BufferedWriter(new FileWriter( RESULT_FILE )));
+ 	 
+ 	 
+ 	 next();
+ 	 System.out.println(1);
+ 	 next();
+ 	 System.out.println(2);
+ 	 next();
+ 	 System.out.println(3);
+ 	 next();
+ 	 System.out.println(4);
+ }
+ 
+ 
+ 
+ 
+ /** Esegue la configurazione the_next. Viene chiamato inizialmente nel costruttore, e poi successivamente dall'environment 
+  * quando una esecuzione è finita. */
+ public void next ()
+ {
+ 	  codifica = Integer.toBinaryString( i );
+   	   
+   	i++;   
+   	   
+   	new Main( prova , codifica ,this );
+ }
+
+
+
+
+
+
+
+
+ public static void main(String r[]) throws Exception{
+ 	 
+ 	 new Launch16Regine();
+   
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+}

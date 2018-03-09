@@ -1,0 +1,57 @@
+import javax.swing.*;
+import java.io.*;
+
+/**
+ * SCOPO: Scrivere una procedura che prende i file generati dal test e li compatta sulla configurazione.
+  In uscita un file si presenta con nome configurazione.numero_prova ed all'interno viene ripetuto il numero
+  della prova, poi viene scritta la configurazione finale, ed infine il numero di mosse. 
+  Si vuole avere un file con nome configurazione contenente le 50 righe delle 50 prove.
+ *
+ * @author  Skyman
+ */
+public class ResultZipper
+{
+
+  static String x;
+  static File[] temps ;
+  static int c = 0;
+
+	public static void main(String[] args)
+	{
+		// apro la directory 0-999 e ne listo i files.
+		File f = new File(".");
+		File[] results = f.listFiles();		
+		// LOOP:
+		for(int i=0; i<results.length; )
+		{
+			// leggo la configurazione del primo
+			x = results[i].getName();
+			temps = new File[50];
+			temps[c] = results[i];
+			c++;
+			while( x.equals( results[i+1].getNome() ) )
+			{
+			  // leggo i file successivi finchè hanno nome uguale
+			  i++;
+			  temps[c] = result[i];
+			  c++;
+			}
+			// creo il file di nome configurazione
+			BufferedWriter out = new BufferedWriter(new FileWriter( x ));
+			BufferedReader in;
+			for( ; c>0 ; )
+			{    // per tutti i file letti (max 50) 
+				   // leggo la riga contenuta
+				   in = new BufferedReader(new FileReader( temps[--c] ));
+				   in.readLine();
+				   in.readLine();
+				   x = in.readLine();
+				   // e la scrivo nel file da generare
+				   out.write ( x, 0, x.length() );
+			}			
+		  // chiudo il file di nome configurazione
+		  out.close();
+		}
+	}
+
+}

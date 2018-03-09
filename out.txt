@@ -1,0 +1,35 @@
+=========================================================
+=========================================================
+
+
+PROVA # 0
+
+4 7 4 1 6 3 6 5 0 2 3 3 4 3 5 0   è la disposizione iniziale.
+
+  0   0   0   0   0   0   0   0   è la disposizione delle regine squilibrate
+9 4 15 3 14 8 1 13 0 0 11 6 10 12 2 3   posizioni al turno 1
+9 3 15 7 14 8 1 4 0 5 11 8 10 12 2 3   posizioni al turno 2
+6 1 13 7 14 1 1 9 0 5 11 8 10 4 2 3   posizioni al turno 3
+12 2 13 6 14 7 1 2 0 5 15 8 10 4 2 9   posizioni al turno 4
+12 8 3 9 14 2 1 6 0 5 13 15 10 4 7 0   posizioni al turno 5
+11 8 3 9 12 14 1 6 2 5 13 15 10 4 7 0   posizioni al turno 6
+---- SOLUZIONE ----
+11 8 3 9 12 14 1 6 2 5 13 15 10 4 7 0    in 6 mosse.
+=========================================================
+=========================================================
+
+
+PROVA # 1
+
+1 1 7 3 4 2 0 9 7 9 7 7 4 4 2 1   è la disposizione iniziale.
+
+  0   0   0   0   0   0   0   0   è la disposizione delle regine squilibrate
+10 12 7 11 8 3 0 13 15 9 5 14 4 6 2 9   posizioni al turno 1
+1 10 7 11 8 3 0 13 15 4 12 14 4 6 2 0   posizioni al turno 2
+1 10 7 11 8 3 0 13 15 9 12 14 4 6 2 6   posizioni al turno 3
+1 10 7 11 8 3 0 13 5 9 12 14 4 9 2 6   posizioni al turno 4
+1 10 7 11 8 3 0 13 5 9 12 14 4 7 2 6   posizioni al turno 5
+1 10 15 11 8 3 0 5 5 9 12 14 4 0 13 6   posizioni al turno 6
+1 10 7 11 15 3 0 6 5 9 12 14 4 2 13 8   posizioni al turno 7
+1 10 7 11 15 3 0 4 5 9 12 6 4 2 13 8   posizioni al turno 8
+1 8 7 11 15 3 0 0 5 9 12 6 4 2 10 14   posizioni al turno 9

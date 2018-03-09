@@ -1,0 +1,52 @@
+import javax.swing.*;
+import java.io.*;
+
+/**
+ * SCOPO:
+ *
+ * Preparare un set di directory per contenere i file di launch ed i responsi dei test eseguiti.
+ * Il nome della directory specifica la configurazione dell'insieme di regine che eseguono il test. 
+ *
+ *
+ * @author  Skyman
+ */
+
+public class Prepara{
+
+ static PrintWriter out = null;
+ static File dir = null;
+ static String codifica = "";
+ 
+ public static void main(String r[]){
+ 	 int n = 2^16;
+   for (int i=0;i<n-1;i++)
+   {
+   	   codifica = Integer.toBinaryString(i);
+   	// creo la directory per i file della prova
+   	   try{
+   	   	
+   	   	    dir = new File( codifica );
+   	   	    
+   	   	    if( dir.mkdir() )
+   	   	    {
+   					 // creo il launcher delle prove con la configurazione codificata in i.
+					   	   try{
+					            out = new PrintWriter(new BufferedWriter(new FileWriter(""+ i +".bat")));
+					            out.append( "java Main "+codifica+" >> "+codifica+"\\esito1.txt \n" );
+					            out.append( "java Main "+codifica+" >> "+codifica+"\\esito2.txt \n" );
+					            out.append( "java Main "+codifica+" >> "+codifica+"\\esito3.txt \n" );
+					            out.append( "java Main "+codifica+" >> "+codifica+"\\esito4.txt \n" );
+					            out.append( "java Main "+codifica+" >> "+codifica+"\\esito5.txt \n" );
+					            out.flush();
+					       }catch(Exception e) { e.printStackTrace(); }   	    	
+   	   	    }
+   	   	    
+   	   	    
+   	   }catch(Exception e) { e.printStackTrace(); }
+   	       	
+   } // out for
+   
+ }
+ 
+ 
+}

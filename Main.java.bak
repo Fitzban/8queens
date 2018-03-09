@@ -1,0 +1,67 @@
+/*
+ * Main.java
+ *
+ * Esecuzione di un test. Vengono eseguite x prove usando con la configurazione 
+ * di regine specidicata in arg[0].
+ *
+ * Created on 19 marzo 2005, 16.00
+ */
+
+public class Main {
+
+    Environment e;
+    public ReginaAgent[] regine;
+    private final int n = 16;
+    
+    
+    public Main(){}
+    
+
+    /** Creates a new instance of Main */
+    public Main(int prova, String r, Launch16Regine caller)
+    {
+        String configurazione = r;
+        regine = new ReginaAgent[n];
+        /*for( int i=0; i<n ; i++)
+        {
+            if (i < 4 && i%2==0)
+                regine[i] = new ReginaAgent( i, false);
+            else
+                regine[i] = new ReginaAgent( i, true);
+        } */
+        int lunghezza = configurazione.length();
+        if(lunghezza<n)
+        {
+          int daMettere = n - lunghezza;
+          while( daMettere>0 )
+          {
+            configurazione = "0"+configurazione;
+            daMettere--;
+          }
+          System.out.println("configurazione: "+configurazione);
+        }
+        for(int i=0;i<n;i++)
+        {
+          if(configurazione.charAt(i)=='0')
+              regine[i] = new ReginaAgent( i, false );
+          else
+              regine[i] = new ReginaAgent( i, true );
+        }
+
+        e = new Environment(n, regine, prova, configurazione, caller);
+        for( int i=0; i<n ; i++)
+        {
+            regine[i].setEnvironment(e);
+            regine[i].start();
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args)
+    {
+        new Main(0,args[0]);
+    }
+
+}
